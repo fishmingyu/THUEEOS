@@ -6,8 +6,8 @@ void *customer_func(void *c)
     sleep(customer.enter);      // enter time
     pthread_mutex_lock(&mutex); // protect queue
     wait_queue.push(customer);
-    sem_post(&sem_customer);
     pthread_mutex_unlock(&mutex);
+    sem_post(&sem_customer);
     sem_wait(&sem_counter); // ready to be served
     sleep(customer.wait);   // serve time
     pthread_exit(NULL);
