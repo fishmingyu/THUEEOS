@@ -18,6 +18,18 @@
 #define DIVIDE 1000
 #define MAXTHREAD 24
 const int thread_count = 2;
+
+int arr[SIZE];
+int threadNow = 0;
+int allCount = 0;
+int num = 0;
+int finish = 0;
+sem_t amount;
+sem_t threadSize;
+sem_t finished;
+pthread_mutex_t mutex;
+pthread_mutex_t Nsorted;
+
 struct pos
 {
     int min;
@@ -34,3 +46,4 @@ int compare(const void *a, const void *b)
 {
     return (*(int *)a - *(int *)b);
 }
+std::vector<pos> posStat;
